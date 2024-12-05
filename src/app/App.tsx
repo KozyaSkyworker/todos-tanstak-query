@@ -13,7 +13,7 @@ function App() {
       >
         Let's start 2
       </Button>
-      <Button>Let's start 3</Button>
+      <Button background='brand.primary.black'>Let's start 3</Button>
       <ChakraButton>Let's start!</ChakraButton>
       <ChakraButton>Let's start!</ChakraButton>
     </>
