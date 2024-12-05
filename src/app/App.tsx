@@ -1,21 +1,32 @@
-import { Button as ChakraButton } from '@chakra-ui/react';
-import { Button } from '@shared/ui';
+import { Box, HStack, Input } from '@chakra-ui/react';
+import { TodoList } from '@entities/Todo';
+import { getTodos } from '@entities/Todo/api/get-todos';
+import { Button } from '@shared/chakra/components/ui/button';
+import { useQuery } from '@tanstack/react-query';
 
 function App() {
+  const { data: todos, isFetching } = useQuery({
+    queryKey: ['todos', 'list'],
+    queryFn: getTodos
+  });
   return (
     <>
-      <ChakraButton>Let's start!</ChakraButton>
-      <ChakraButton>Let's start!</ChakraButton>
-      <Button color='primary'>Let's start 1</Button>
-      <Button
-        variant='solid'
-        color='primary'
+      <Box
+        maxWidth={'800px'}
+        margin={'0 auto'}
       >
-        Let's start 2
-      </Button>
-      <Button background='brand.primary.black'>Let's start 3</Button>
-      <ChakraButton>Let's start!</ChakraButton>
-      <ChakraButton>Let's start!</ChakraButton>
+        <HStack>
+          <Input />
+          <Button
+            loading={isFetching}
+            backgroundColor='green.500'
+          >
+            {' '}
+            + Добавить
+          </Button>
+        </HStack>
+        {todos && <TodoList todos={todos} />}
+      </Box>
     </>
   );
 }

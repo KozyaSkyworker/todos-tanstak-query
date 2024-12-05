@@ -2,11 +2,13 @@ import { defineRecipe } from '@chakra-ui/react';
 
 export const buttonRecipe = defineRecipe({
   base: {
-    display: 'inline-block'
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   variants: {
     variant: {
-      solid: { bg: 'red.200', color: 'white' },
+      solid: { bg: 'red.200', color: 'white', _hover: { bg: 'red.500' } },
       outline: { borderWidth: '1px', borderColor: 'red.200' }
     },
     size: {
