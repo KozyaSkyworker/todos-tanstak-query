@@ -2,7 +2,7 @@ import { defineRecipe } from '@chakra-ui/react';
 
 export const buttonRecipe = defineRecipe({
   base: {
-    display: 'block'
+    display: 'inline-block'
   },
   variants: {
     variant: {
