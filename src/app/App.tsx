@@ -1,9 +1,21 @@
-import { Button } from '@chakra-ui/react';
+import { Button as ChakraButton } from '@chakra-ui/react';
+import { Button } from '@shared/ui';
 
 function App() {
   return (
     <>
-      <Button>Let's start!</Button>
+      <ChakraButton>Let's start!</ChakraButton>
+      <ChakraButton>Let's start!</ChakraButton>
+      <Button color='primary'>Let's start 1</Button>
+      <Button
+        variant='solid'
+        color='primary'
+      >
+        Let's start 2
+      </Button>
+      <Button>Let's start 3</Button>
+      <ChakraButton>Let's start!</ChakraButton>
+      <ChakraButton>Let's start!</ChakraButton>
     </>
   );
 }
