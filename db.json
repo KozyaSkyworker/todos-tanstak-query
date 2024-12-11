@@ -11,11 +11,6 @@
       "isDone": true
     },
     {
-      "id": "3",
-      "text": "third text",
-      "isDone": false
-    },
-    {
       "id": "43424235235341",
       "text": "new todo by tanstack query",
       "isDone": false
@@ -23,11 +18,6 @@
     {
       "id": "1733457146015",
       "text": "fifth task with invalidate queries",
-      "isDone": false
-    },
-    {
-      "id": "1733457301477",
-      "text": "now i hope invalidte is working",
       "isDone": false
     },
     {
