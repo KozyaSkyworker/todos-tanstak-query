@@ -15,7 +15,8 @@ function App() {
 
   const { data: todos, isFetching } = useQuery({
     queryKey: ['todos'],
-    queryFn: getTodos
+    queryFn: getTodos,
+    retry: 2
   });
 
   const mutation = useMutation({
