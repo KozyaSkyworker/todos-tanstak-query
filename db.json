@@ -3,27 +3,32 @@
     {
       "id": "1",
       "text": "a text",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "2",
       "text": "another long long text",
-      "isDone": true
+      "isDone": false
     },
     {
       "id": "43424235235341",
       "text": "new todo by tanstack query",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "1733457146015",
       "text": "fifth task with invalidate queries",
-      "isDone": false
+      "isDone": true
     },
     {
       "id": "1733459704554",
       "text": "test with optimistic update",
       "isDone": false
+    },
+    {
+      "id": "1734061489664",
+      "text": "new task from 13.12.24",
+      "isDone": true
     }
   ]
 }
