@@ -7,13 +7,18 @@ import { createTodo, getTodos } from '@entities/Todo/api';
 import { TodoDTO } from '@entities/Todo/model';
 
 import { Button } from '@shared/chakra/components/ui/button';
+import { toaster, Toaster } from '@shared/chakra/components/ui/toaster';
 
 function App() {
   const queryClient = useQueryClient();
 
   const ref = useRef<HTMLInputElement | null>(null);
 
-  const { data: todos, isFetching } = useQuery({
+  const {
+    data: todos,
+    isLoading,
+    isFetching
+  } = useQuery({
     queryKey: ['todos'],
     queryFn: getTodos,
     retry: 2
@@ -34,12 +39,20 @@ function App() {
     onError: (_, __, context) => {
       queryClient.setQueryData(['todos'], context?.previousTodos);
     },
+    onSuccess: () => {
+      if (ref.current) {
+        ref.current.value = '';
+      }
+    },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: ['todos'] });
     }
   });
 
   const handleCreateTodoClick = () => {
+    toaster.success({
+      title: 'Creating...'
+    });
     const val = ref.current?.value;
     if (!val) {
       alert('Empty!!!');
@@ -61,7 +74,7 @@ function App() {
         <HStack>
           <Input ref={ref} />
           <Button
-            loading={isFetching}
+            loading={isLoading}
             backgroundColor='green.500'
             onClick={handleCreateTodoClick}
           >
@@ -69,8 +82,10 @@ function App() {
             + Добавить
           </Button>
         </HStack>
+        {isFetching && <p>Loading...</p>}
         {todos && <TodoList todos={todos} />}
       </Box>
+      <Toaster />
     </>
   );
 }
