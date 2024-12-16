@@ -1,11 +1,11 @@
 import { Box, Text, HStack, Button } from '@chakra-ui/react';
 import { Checkbox } from '@shared/chakra/components/ui/checkbox';
-import { TodoDTO } from '../model';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteTodo } from '../api';
 import { toggleTodo } from '../api/toggle-todo';
+import { Todo } from '../model/todo.dto';
 
-const TodoList = ({ todos }: { todos: TodoDTO[] }) => {
+const TodoList = ({ todos }: { todos: Todo[] }) => {
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
@@ -15,7 +15,7 @@ const TodoList = ({ todos }: { todos: TodoDTO[] }) => {
 
       const previousTodos = queryClient.getQueryData(['todos']);
 
-      queryClient.setQueryData(['todos'], (old: TodoDTO[]) =>
+      queryClient.setQueryData(['todos'], (old: Todo[]) =>
         old.filter((todo) => todo.id !== deletedTodo)
       );
 
@@ -36,7 +36,7 @@ const TodoList = ({ todos }: { todos: TodoDTO[] }) => {
 
       const previousTodos = queryClient.getQueryData(['todos']);
 
-      queryClient.setQueryData(['todos'], (old: TodoDTO[]) =>
+      queryClient.setQueryData(['todos'], (old: Todo[]) =>
         old.map((todo) => {
           if (todo.id === toggledTodo.id) {
             return {

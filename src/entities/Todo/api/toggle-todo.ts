@@ -1,7 +1,7 @@
 import { BASE_URL } from '@shared/api';
-import { TodoDTO } from '../model';
+import { Todo } from '../model/todo.dto';
 
-export const toggleTodo = (data: Partial<TodoDTO> & { id: string }) => {
+export const toggleTodo = (data: Partial<Todo> & { id: string }) => {
   return fetch(`${BASE_URL}/todos/${data.id}`, {
     method: 'PATCH',
     body: JSON.stringify(data)
