@@ -7,7 +7,8 @@ import { createTodo, getTodos } from '@entities/Todo/api';
 
 import { Button } from '@shared/chakra/components/ui/button';
 import { toaster, Toaster } from '@shared/chakra/components/ui/toaster';
-import { Todo } from '@entities/Todo/model/todo.dto';
+import { Todo, TodoDTO } from '@entities/Todo/model/todo.dto';
+import { queryClient } from '@shared/api';
 
 function App() {
   const queryClient = useQueryClient();
@@ -41,7 +42,9 @@ function App() {
       const previousTodos = queryClient.getQueryData(['todos']);
       console.log(previousTodos);
 
-      queryClient.setQueryData(['todos'], (old: Todo[]) => [...old, newTodo]);
+      queryClient.setQueryData(['todos'], (old: { pageParams: number[]; pages: TodoDTO[] }) => {
+        return { ...old };
+      });
 
       return { previousTodos };
     },

@@ -6,6 +6,7 @@ import { toggleTodo } from '../api/toggle-todo';
 import { Todo } from '../model/todo.dto';
 
 const TodoList = ({ todos }: { todos: Todo[] }) => {
+  console.log('tl', todos);
   const queryClient = useQueryClient();
 
   const deleteMutation = useMutation({
